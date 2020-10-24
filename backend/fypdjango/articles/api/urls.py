@@ -26,5 +26,5 @@ urlpatterns = router.urls
 #    path('<pk>/delete', ArticleDeleteView.as_view())
 
 
- ##   path('mytest', views.testingReact,name='mytest'),
+#    path('mytest', views.testingReact,name='mytest'),
 #]

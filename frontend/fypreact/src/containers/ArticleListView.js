@@ -10,14 +10,27 @@ class ArticleList extends React.Component {
     articles: []
   };
 
-//axios fetch the data and returns the promise
-  fetchArticles = () => {
-    axios.get("http://127.0.0.1:8000/api/").then(res => {
-      this.setState({
-        articles: res.data
-      });
+//using axios
+//  fetchArticles = () => {
+//    axios.get("http://127.0.0.1:8000/api/").then(res => {
+//      this.setState({
+//        articles: res.data
+//      });
+//    });
+//  }
+
+//using fetch
+fetchArticles = () => {
+
+    fetch("http://127.0.0.1:8000/api/")
+    .then(res => res.json())
+    .then((data) => {
+        this.setState({
+            articles : data
+        })
     });
-  }
+
+}
 
 //this is the important function
   componentDidMount() {

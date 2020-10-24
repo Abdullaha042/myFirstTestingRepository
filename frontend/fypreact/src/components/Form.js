@@ -11,29 +11,35 @@ class CustomForm extends React.Component{
 handleFormSubmit = (event, requestType, articleID) => {
 
     //event.preventDefault();//in order to not reload the page
-    const title = event.target.elements.title.value;
-    const content = event.target.elements.content.value;
+    const title1 = event.target.elements.title.value;
+    const content1 = event.target.elements.content.value;
 
     switch (requestType){
         case 'post':
-        return axios.post('http://127.0.0.1:8000/api/',
-            {
-                title:title,
-                content:content
-            }
-        )
-        .then(res => console.log(res))
-        .catch(error => console.err(error));
+
+        const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: title1 , content : content1})
+    };
+        fetch('http://127.0.0.1:8000/api/', requestOptions)
+        .then(response => response.json())
+        .then(data => this.setState({ postId: data.id }));
+
 
         case 'put':
-           return axios.put(`http://127.0.0.1:8000/api/${articleID}/`,
-            {
-                title:title,
-                content:content
-            }
-        )
-        .then(res => console.log(res))
-        .catch(error => console.err(error));
+        //donot use axios for put use fetch
+           //return axios.put(`http://127.0.0.1:8000/api/${articleID}/`,
+            //{
+            //    title:title1,
+            //    content:content1
+            //}
+        //)
+        //.then(res => console.log(res))
+        //.catch(error => console.err(error));
+
+        case 'delete':
+        //same as delete as well
 
     }
 

@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'fypdjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fypdatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'admin',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -135,4 +139,4 @@ REST_FRAMEWORK = {
 }
 
 
-CORS_ORIGIN_ALLOW_ALL= True
+CORS_ORIGIN_ALLOW_ALL = True
